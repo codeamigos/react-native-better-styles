@@ -1,0 +1,37 @@
+{
+  "rules": {
+    "align": [false],
+    "arrow-parens": false,
+    "interface-name": [true, "never-prefix"],
+    "no-consecutive-blank-lines": [false],
+    "no-console": [true, "log", "warn"],
+    "no-empty": false,
+    "no-switch-case-fall-through": true,
+    "no-irregular-whitespace": true,
+    "no-object-literal-type-assertion": false,
+    "no-var-requires": false,
+    "no-unnecessary-initializer": false,
+    "max-classes-per-file": [false],
+    "max-line-length": [true, 180],
+    "member-access": [false],
+    "member-ordering": [false],
+    "object-literal-key-quotes": [false],
+    "object-literal-shorthand": false,
+    "object-literal-sort-keys": false,
+    "one-line": [false],
+    "one-variable-per-declaration": [false],
+    "ordered-imports": [false],
+    "switch-default": true,
+    "quotemark": [true, "single", "jsx-double"],
+    "variable-name": [true, "ban-keywords"],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-module",
+      "check-separator",
+      "check-type",
+      "check-typecast"
+    ]
+  }
+}

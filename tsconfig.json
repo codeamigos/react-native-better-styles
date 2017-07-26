@@ -1,0 +1,17 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "react-native",
+    "outDir": "lib",
+    "rootDir": "src",
+    "strict": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "allowJs": true,
+    "sourceMap": false
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
