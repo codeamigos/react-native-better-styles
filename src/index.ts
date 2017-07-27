@@ -10,9 +10,20 @@ export interface Palette {
   [key: string]: string
 }
 
-type FontWeight = 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'
+export declare type FontWeight =
+  | 'normal'
+  | 'bold'
+  | '100'
+  | '200'
+  | '300'
+  | '400'
+  | '500'
+  | '600'
+  | '700'
+  | '800'
+  | '900'
 
-type NumericStyleKey =
+export declare type NumericStyleKey =
   | 'marginTop'
   | 'marginBottom'
   | 'marginRight'
@@ -58,7 +69,23 @@ export interface ImageStyleResult {
   [key: string]: RN.ImageStyle
 }
 
-type StyleResult = ImageStyleResult | ViewStyleResult | ImageStyleResult
+export declare type StyleResult = ImageStyleResult | ViewStyleResult | ImageStyleResult
+
+export interface Options {
+  remSize?: number
+  multiplicators?: Multiplicators
+  headings?: Multiplicators
+  palette?: Palette
+  fonts?: Palette
+  fontWeights?: FontWeightPalette
+}
+
+export interface BuildStyles {
+  s: StyleResult
+  sizes: Multiplicators
+  colors: Palette
+  build: (defaultOptions: Options, callback?: () => any) => void
+}
 
 const genericRemStyles: NumericStyle = {
   mt: 'marginTop',
@@ -243,8 +270,8 @@ const generatePalette = (colors: Palette): Palette => {
   return resultPalette
 }
 
-const generateColorsPalette = (colors: Palette): ImageStyleResult | ImageStyleResult => {
-  const resultStyles: ImageStyleResult | ImageStyleResult = {}
+const generateColorsPalette = (colors: Palette): ViewStyleResult => {
+  const resultStyles: ViewStyleResult = {}
   Object.keys(colors).map(name => {
     const color: string = colors[name]
     resultStyles[`bg_${name}`] = { backgroundColor: color }
@@ -271,8 +298,8 @@ const generateTextColorsPalette = (colors: Palette): TextStyleResult => {
   return resultStyles
 }
 
-const generateOpacity = (): StyleResult => {
-  const resultStyles: StyleResult = {}
+const generateOpacity = (): ViewStyleResult => {
+  const resultStyles: ViewStyleResult = {}
   for (let i: number = 5; i < 100; i += 5) {
     const opacity: number = i / 100
     resultStyles[`o_${i}`] = { opacity }
@@ -298,26 +325,10 @@ const generateFontWeights = (weights: FontWeightPalette): TextStyleResult => {
   return resultStyles
 }
 
-export interface Options {
-  remSize?: number
-  multiplicators?: Multiplicators
-  headings?: Multiplicators
-  palette?: Palette
-  fonts?: Palette
-  fontWeights?: FontWeightPalette
-}
-
-export interface BuildStyles {
-  s: StyleResult
-  sizes: Multiplicators
-  colors: Palette
-  build: (defaultOptions: Options, callback?: () => any) => void
-}
-
-const buildStyles: BuildStyles = {
-  s: {},
-  sizes: {},
-  colors: {},
+export const buildStyles = {
+  s: {} as StyleResult,
+  sizes: {} as Multiplicators,
+  colors: {} as Palette,
 
   build: (defaultOptions: Options = {}, callback = () => {}) => {
     const remSize = defaultOptions.remSize || 16
@@ -346,9 +357,9 @@ const buildStyles: BuildStyles = {
     )
     callback()
   }
-}
+} as BuildStyles
 
-export const defaultMultiplicators: Multiplicators = {
+export const defaultMultiplicators = {
   '0': 0,
   '025': 0.25,
   '05': 0.5,
@@ -377,23 +388,23 @@ export const defaultMultiplicators: Multiplicators = {
   '7': 7,
   '75': 7.5,
   '8': 8
-}
+} as Multiplicators
 
-export const defaultHeadings: Multiplicators = {
+export const defaultHeadings = {
   '6': 0.875,
   '5': 1,
   '4': 1.25,
   '3': 1.75,
   '2': 2.35,
   '1': 3.25
-}
+} as Multiplicators
 
-export const defaultPalette: Palette = {
+export const defaultPalette = {
   white: 'rgb(255,255,255)',
   black: 'rgb(0,0,0)'
-}
+} as Palette
 
-export const defaultFontWeights: FontWeightPalette = {
+export const defaultFontWeights = {
   normal: 'normal',
   b: 'bold',
   fw1: '100',
@@ -405,7 +416,9 @@ export const defaultFontWeights: FontWeightPalette = {
   fw7: '700',
   fw8: '800',
   fw9: '900'
-}
+} as FontWeightPalette
 
-export default buildStyles
-export const { colors, s, sizes } = buildStyles
+export const colors = buildStyles.colors as Palette
+export const sizes = buildStyles.sizes as Multiplicators
+export const s = buildStyles.s as StyleResult
+export const build = buildStyles.build as (defaultOptions: Options, callback?: () => any) => void
