@@ -6,7 +6,7 @@ export interface Palette {
     [key: string]: string;
 }
 export declare type FontWeight = 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
-export declare type NumericStyleKey = 'marginTop' | 'marginBottom' | 'marginRight' | 'marginLeft' | 'paddingTop' | 'paddingBottom' | 'paddingRight' | 'paddingLeft' | 'height' | 'width' | 'minHeight' | 'minWidth' | 'maxHeight' | 'maxWidth' | 'right' | 'left' | 'top' | 'bottom' | 'borderRadius' | 'borderWidth' | 'borderTopWidth' | 'borderRightWidth' | 'borderBottomWidth' | 'borderLeftWidth' | 'lineHeight' | 'fontSize';
+export declare type NumericStyleKey = 'marginTop' | 'marginBottom' | 'marginRight' | 'marginLeft' | 'marginHorizontal' | 'marginVertical' | 'paddingTop' | 'paddingBottom' | 'paddingRight' | 'paddingLeft' | 'paddingHorizontal' | 'paddingVertical' | 'height' | 'width' | 'minHeight' | 'minWidth' | 'maxHeight' | 'maxWidth' | 'right' | 'left' | 'top' | 'bottom' | 'borderRadius' | 'borderWidth' | 'borderTopWidth' | 'borderRightWidth' | 'borderBottomWidth' | 'borderLeftWidth' | 'lineHeight' | 'fontSize';
 export interface FontWeightPalette {
     [key: string]: FontWeight;
 }

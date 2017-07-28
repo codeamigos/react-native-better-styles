@@ -28,10 +28,14 @@ export declare type NumericStyleKey =
   | 'marginBottom'
   | 'marginRight'
   | 'marginLeft'
+  | 'marginHorizontal'
+  | 'marginVertical'
   | 'paddingTop'
   | 'paddingBottom'
   | 'paddingRight'
   | 'paddingLeft'
+  | 'paddingHorizontal'
+  | 'paddingVertical'
   | 'height'
   | 'width'
   | 'minHeight'
@@ -92,10 +96,14 @@ const genericRemStyles: NumericStyle = {
   mb: 'marginBottom',
   mr: 'marginRight',
   ml: 'marginLeft',
+  mh: 'marginHorizontal',
+  mv: 'marginVertical',
   pt: 'paddingTop',
   pb: 'paddingBottom',
   pr: 'paddingRight',
   pl: 'paddingLeft',
+  ph: 'paddingHorizontal',
+  pv: 'paddingVertical',
   h: 'height',
   w: 'width',
   minh: 'minHeight',
