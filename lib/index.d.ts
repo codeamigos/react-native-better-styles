@@ -1,12 +1,12 @@
 import * as RN from 'react-native';
-export interface Multiplicators {
+export interface Multipliers {
     [key: string]: number;
 }
 export interface Palette {
     [key: string]: string;
 }
 export declare type FontWeight = 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
-export declare type NumericStyleKey = 'marginTop' | 'marginBottom' | 'marginRight' | 'marginLeft' | 'marginHorizontal' | 'marginVertical' | 'paddingTop' | 'paddingBottom' | 'paddingRight' | 'paddingLeft' | 'paddingHorizontal' | 'paddingVertical' | 'height' | 'width' | 'minHeight' | 'minWidth' | 'maxHeight' | 'maxWidth' | 'right' | 'left' | 'top' | 'bottom' | 'borderRadius' | 'borderWidth' | 'borderTopWidth' | 'borderRightWidth' | 'borderBottomWidth' | 'borderLeftWidth' | 'lineHeight' | 'fontSize';
+export declare type NumericStyleKey = 'margin' | 'padding' | 'marginTop' | 'marginBottom' | 'marginRight' | 'marginLeft' | 'marginHorizontal' | 'marginVertical' | 'paddingTop' | 'paddingBottom' | 'paddingRight' | 'paddingLeft' | 'paddingHorizontal' | 'paddingVertical' | 'height' | 'width' | 'minHeight' | 'minWidth' | 'maxHeight' | 'maxWidth' | 'right' | 'left' | 'top' | 'bottom' | 'borderRadius' | 'borderWidth' | 'borderTopWidth' | 'borderRightWidth' | 'borderBottomWidth' | 'borderLeftWidth' | 'lineHeight' | 'fontSize';
 export interface FontWeightPalette {
     [key: string]: FontWeight;
 }
@@ -25,24 +25,24 @@ export interface ImageStyleResult {
 export declare type StyleResult = ImageStyleResult | ViewStyleResult | ImageStyleResult;
 export interface Options {
     remSize?: number;
-    multiplicators?: Multiplicators;
-    headings?: Multiplicators;
+    multipliers?: Multipliers;
+    headings?: Multipliers;
     palette?: Palette;
     fonts?: Palette;
     fontWeights?: FontWeightPalette;
 }
 export interface BuildStyles {
     s: StyleResult;
-    sizes: Multiplicators;
+    sizes: Multipliers;
     colors: Palette;
     build: (defaultOptions: Options, callback?: () => any) => void;
 }
 export declare const buildStyles: BuildStyles;
-export declare const defaultMultiplicators: Multiplicators;
-export declare const defaultHeadings: Multiplicators;
+export declare const defaultMultipliers: Multipliers;
+export declare const defaultHeadings: Multipliers;
 export declare const defaultPalette: Palette;
 export declare const defaultFontWeights: FontWeightPalette;
 export declare const colors: Palette;
-export declare const sizes: Multiplicators;
+export declare const sizes: Multipliers;
 export declare const s: StyleResult;
 export declare const build: (defaultOptions: Options, callback?: (() => any) | undefined) => void;

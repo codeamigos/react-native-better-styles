@@ -2,7 +2,7 @@ import * as Color from 'color'
 import * as _ from 'lodash'
 import * as RN from 'react-native'
 
-export interface Multiplicators {
+export interface Multipliers {
   [key: string]: number
 }
 
@@ -79,8 +79,8 @@ export declare type StyleResult = ImageStyleResult | ViewStyleResult | ImageStyl
 
 export interface Options {
   remSize?: number
-  multiplicators?: Multiplicators
-  headings?: Multiplicators
+  multipliers?: Multipliers
+  headings?: Multipliers
   palette?: Palette
   fonts?: Palette
   fontWeights?: FontWeightPalette
@@ -88,7 +88,7 @@ export interface Options {
 
 export interface BuildStyles {
   s: StyleResult
-  sizes: Multiplicators
+  sizes: Multipliers
   colors: Palette
   build: (defaultOptions: Options, callback?: () => any) => void
 }
@@ -245,25 +245,25 @@ const genericStaticStyles: StyleResult = {
   }
 }
 
-const multiplyStylesValues = (styles: NumericStyle, multiplicators: Multiplicators): ViewStyleResult => {
+const multiplyStylesValues = (styles: NumericStyle, multipliers: Multipliers): ViewStyleResult => {
   const resultStyles: ViewStyleResult = {}
   Object.keys(styles).map(key => {
-    Object.keys(multiplicators).map(prefix => {
-      const multiplicatorValue: number = multiplicators[prefix]
+    Object.keys(multipliers).map(prefix => {
+      const multiplierValue: number = multipliers[prefix]
       const styleName: NumericStyleKey = styles[key]
       resultStyles[key + prefix] = {
-        [styleName]: multiplicatorValue
+        [styleName]: multiplierValue
       }
     })
   })
   return resultStyles
 }
 
-const multiplyToRem = (remValue: number, multiplicators: Multiplicators): Multiplicators => {
-  const multiplied: Multiplicators = {}
-  Object.keys(multiplicators).map(prefix => {
-    const multiplicatorValue: number = multiplicators[prefix]
-    multiplied[prefix] = Math.round(multiplicatorValue * remValue * 100) / 100
+const multiplyToRem = (remValue: number, multipliers: Multipliers): Multipliers => {
+  const multiplied: Multipliers = {}
+  Object.keys(multipliers).map(prefix => {
+    const multiplierValue: number = multipliers[prefix]
+    multiplied[prefix] = Math.round(multiplierValue * remValue * 100) / 100
   })
   return multiplied
 }
@@ -339,24 +339,24 @@ const generateFontWeights = (weights: FontWeightPalette): TextStyleResult => {
 
 export const buildStyles = {
   s: {} as StyleResult,
-  sizes: {} as Multiplicators,
+  sizes: {} as Multipliers,
   colors: {} as Palette,
 
   build: (defaultOptions: Options = {}, callback = () => {}) => {
     const remSize = defaultOptions.remSize || 16
-    const multiplicators = defaultOptions.multiplicators || defaultMultiplicators
+    const multipliers = defaultOptions.multipliers || defaultMultipliers
     const headings = defaultOptions.headings || defaultHeadings
     const palette = defaultOptions.palette || defaultPalette
     const fonts = defaultOptions.palette || defaultPalette
     const fontWeights = defaultOptions.fontWeights || defaultFontWeights
     _.assign(buildStyles.colors, generatePalette(palette))
-    _.assign(buildStyles.sizes, multiplyToRem(remSize, multiplicators))
+    _.assign(buildStyles.sizes, multiplyToRem(remSize, multipliers))
     _.assign(
       buildStyles.s,
       RN.StyleSheet.create({
-        ...multiplyStylesValues(genericPointStyles, multiplicators),
-        ...multiplyStylesValues(genericRemStyles, multiplyToRem(remSize, multiplicators)),
-        ...multiplyStylesValues(textRemStyles, multiplyToRem(remSize, multiplicators)),
+        ...multiplyStylesValues(genericPointStyles, multipliers),
+        ...multiplyStylesValues(genericRemStyles, multiplyToRem(remSize, multipliers)),
+        ...multiplyStylesValues(textRemStyles, multiplyToRem(remSize, multipliers)),
         ...multiplyStylesValues({ f: 'fontSize' }, multiplyToRem(remSize, headings)),
         ...generateColorsPalette(palette),
         ...generateTextColorsPalette(palette),
@@ -371,7 +371,7 @@ export const buildStyles = {
   }
 } as BuildStyles
 
-export const defaultMultiplicators = {
+export const defaultMultipliers = {
   '0': 0,
   '025': 0.25,
   '05': 0.5,
@@ -400,7 +400,7 @@ export const defaultMultiplicators = {
   '7': 7,
   '75': 7.5,
   '8': 8
-} as Multiplicators
+} as Multipliers
 
 export const defaultHeadings = {
   '6': 0.875,
@@ -409,7 +409,7 @@ export const defaultHeadings = {
   '3': 1.75,
   '2': 2.35,
   '1': 3.25
-} as Multiplicators
+} as Multipliers
 
 export const defaultPalette = {
   white: 'rgb(255,255,255)',
@@ -431,6 +431,6 @@ export const defaultFontWeights = {
 } as FontWeightPalette
 
 export const colors = buildStyles.colors as Palette
-export const sizes = buildStyles.sizes as Multiplicators
+export const sizes = buildStyles.sizes as Multipliers
 export const s = buildStyles.s as StyleResult
 export const build = buildStyles.build as (defaultOptions: Options, callback?: () => any) => void
