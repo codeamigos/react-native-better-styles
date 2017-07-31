@@ -142,8 +142,8 @@ First of all, let's have a look what params could be passed as `Options` to reac
 ```javascript
 export interface Options {
   remSize?: number
-  multiplicators?: Multiplicators
-  headings?: Multiplicators
+  multipliers?: Multipliers
+  headings?: Multipliers
   palette?: Palette
   fonts?: Palette
   fontWeights?: FontWeightPalette
