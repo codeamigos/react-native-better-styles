@@ -24,6 +24,8 @@ export declare type FontWeight =
   | '900'
 
 export declare type NumericStyleKey =
+  | 'margin'
+  | 'padding'
   | 'marginTop'
   | 'marginBottom'
   | 'marginRight'
@@ -92,6 +94,8 @@ export interface BuildStyles {
 }
 
 const genericRemStyles: NumericStyle = {
+  m: 'margin',
+  p: 'padding',
   mt: 'marginTop',
   mb: 'marginBottom',
   mr: 'marginRight',
