@@ -46,4 +46,82 @@ const {s} = BS
 
 ```
 
-Better documentation with description of all options and list of styles is coming
+
+## Predefined styles
+List of styles not affected by build options, use them as `s.absolute` to get `position: 'absolute'` result
+
+### Border-radius modificators
+```javascript
+  br__bottom            borderTopLeftRadius: 0,
+                        borderTopRightRadius: 0
+
+  br__top               borderBottomLeftRadius: 0,
+                        borderBottomRightRadius: 0
+                        
+  br__left              borderTopRightRadius: 0,
+                        borderBottomRightRadius: 0
+
+  br__right             borderTopLeftRadius: 0,
+                        borderBottomLeftRadius: 0
+
+```
+
+### Position
+```javascript
+  absolute              position: 'absolute'
+    
+  absolute__fill        left: 0,
+                        top: 0,
+                        right: 0,
+                        bottom: 0
+
+```
+
+### Flexbox
+```javascript
+  flx_i                 flex: 1
+
+  flx_grow              flexGrow: 1
+
+  flx_row               flexDirection: 'row'
+
+  flx_rr                flexDirection: 'row-reverse'
+
+  flx_cr                flexDirection: 'column-reverse'
+
+  flx_wrap              flexWrap: 'wrap'
+
+  aifs                  alignItems: 'flex-start'
+
+  aic                   alignItems: 'center'
+
+  aife                  alignItems: 'flex-end'
+
+  asfs                  alignSelf: 'flex-start'
+
+  asc                   alignSelf: 'center'
+
+  asfe                  alignSelf: 'flex-end'
+
+  ass                   alignSelf: 'stretch'
+
+  jcfe                  justifyContent: 'flex-end'
+
+  jcc                   justifyContent: 'center'
+
+  jcsb                  justifyContent: 'space-between'
+
+  jcsa                  justifyContent: 'space-around'
+
+```
+
+### Image Resize Mode
+```javascript
+  rm_contain            resizeMode: 'contain'
+
+  rm_cover              resizeMode: 'cover'
+
+  rm_stretch            resizeMode: 'stretch'
+
+```
+
