@@ -3,6 +3,8 @@
 
 react-native-better-styles library generates you a set of functional styles, colors and sizes to use in your react-native components
 
+
+
 ## Getting started
 
 Install package
@@ -47,8 +49,10 @@ const {s} = BS
 ```
 
 
+
 ## Predefined styles
 List of styles not affected by build options, use them as `s.absolute` to get `position: 'absolute'` result
+
 
 ### Border-radius modificators
 ```javascript
@@ -66,6 +70,7 @@ List of styles not affected by build options, use them as `s.absolute` to get `p
 
 ```
 
+
 ### Position
 ```javascript
   absolute              position: 'absolute'
@@ -76,6 +81,7 @@ List of styles not affected by build options, use them as `s.absolute` to get `p
                         bottom: 0
 
 ```
+
 
 ### Flexbox
 ```javascript
@@ -115,6 +121,7 @@ List of styles not affected by build options, use them as `s.absolute` to get `p
 
 ```
 
+
 ### Image Resize Mode
 ```javascript
   rm_contain            resizeMode: 'contain'
@@ -124,4 +131,39 @@ List of styles not affected by build options, use them as `s.absolute` to get `p
   rm_stretch            resizeMode: 'stretch'
 
 ```
+
+
+
+## Build Options
+Building better styles with custom options like _remSize_ or your custom colors _palette_ and _multiplicators_ is the best way to create the most suitable styles your design needs.
+
+First of all, let's have a look what params could be passed as `Options` to react-native-better-styles `build()` function (as you can see, every property is optional)
+
+```javascript
+export interface Options {
+  remSize?: number
+  multiplicators?: Multiplicators
+  headings?: Multiplicators
+  palette?: Palette
+  fonts?: Palette
+  fontWeights?: FontWeightPalette
+}
+```
+
+Ok, now let's figure out what every option affects to
+
+### remSize Option
+
+`remSize` is the main multiplier for calculation all variable styles like paddings, margins, font sizes, etc... Usually `remSize` is equal to base font size. Also it's a good practice to set different `remSize` for different viewport/screen sizes, to automatically scale all other styles and make your components look same on different devices.
+
+```
+const { width: screenWidth } = ReactNative.Dimensions.get('window')
+...
+BS.build(
+  {
+    remSize: screenWidth > 340 ? 17 : 15
+  } as BS.Options
+)
+```
+In this example all styles will be scaled up if sreen with will be more than 340
 
