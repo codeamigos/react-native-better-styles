@@ -144,7 +144,7 @@ List of styles not affected by build options, use them as `s.absolute` to get `p
 
 ```
 
-### Opaciry
+### Opacity
 ```javascript
   o_95                  opacity: 0.95
 
@@ -154,7 +154,7 @@ List of styles not affected by build options, use them as `s.absolute` to get `p
   
   ...
   
-  o_5                  opacity: 0.05
+  o_5                   opacity: 0.05
 
 ```
 
