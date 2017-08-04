@@ -347,7 +347,7 @@ export const buildStyles = {
     const multipliers = defaultOptions.multipliers || defaultMultipliers
     const headings = defaultOptions.headings || defaultHeadings
     const palette = defaultOptions.palette || defaultPalette
-    const fonts = defaultOptions.palette || defaultPalette
+    const fonts = defaultOptions.fonts || {}
     const fontWeights = defaultOptions.fontWeights || defaultFontWeights
     _.assign(buildStyles.colors, generatePalette(palette))
     _.assign(buildStyles.sizes, multiplyToRem(remSize, multipliers))
