@@ -119,7 +119,7 @@ const genericRemStyles: NumericStyle = {
   t: 'top',
   b: 'bottom',
   br: 'borderRadius'
-}
+} as const
 
 const genericPointStyles: NumericStyle = {
   bw: 'borderWidth',
@@ -127,12 +127,12 @@ const genericPointStyles: NumericStyle = {
   brw: 'borderRightWidth',
   bbw: 'borderBottomWidth',
   blw: 'borderLeftWidth'
-}
+} as const
 
 const textRemStyles: NumericStyle = {
   lh: 'lineHeight',
   fs: 'fontSize'
-}
+} as const
 
 const textStaticStyles: TextStyleResult = {
   // Text
@@ -148,7 +148,7 @@ const textStaticStyles: TextStyleResult = {
   tr: {
     textAlign: 'right'
   }
-}
+} as const
 
 const genericStaticStyles: StyleResult = {
   // No border radius
@@ -243,7 +243,7 @@ const genericStaticStyles: StyleResult = {
   rm_stretch: {
     resizeMode: 'stretch'
   }
-}
+} as const
 
 const multiplyStylesValues = (styles: NumericStyle, multipliers: Multipliers): ViewStyleResult => {
   const resultStyles: ViewStyleResult = {}
@@ -275,7 +275,10 @@ const generatePalette = (colors: Palette): Palette => {
     resultPalette[name] = color
 
     for (let i: number = 5; i < 100; i += 5) {
-      const rgbString: string = Color(color).alpha(i / 100).rgb().string()
+      const rgbString: string = Color(color)
+        .alpha(i / 100)
+        .rgb()
+        .string()
       resultPalette[`${name}_${i}`] = rgbString
     }
   })
@@ -289,7 +292,10 @@ const generateColorsPalette = (colors: Palette): ViewStyleResult => {
     resultStyles[`bg_${name}`] = { backgroundColor: color }
     resultStyles[`b_${name}`] = { borderColor: color }
     for (let i: number = 5; i < 100; i += 5) {
-      const rgbString: string = Color(color).alpha(i / 100).rgb().string()
+      const rgbString: string = Color(color)
+        .alpha(i / 100)
+        .rgb()
+        .string()
       resultStyles[`bg_${name}_${i}`] = { backgroundColor: rgbString }
       resultStyles[`b_${name}_${i}`] = { borderColor: rgbString }
     }
@@ -303,7 +309,10 @@ const generateTextColorsPalette = (colors: Palette): TextStyleResult => {
     const color: string = colors[name]
     resultStyles[name] = { color: color }
     for (let i: number = 5; i < 100; i += 5) {
-      const rgbString: string = Color(color).alpha(i / 100).rgb().string()
+      const rgbString: string = Color(color)
+        .alpha(i / 100)
+        .rgb()
+        .string()
       resultStyles[`${name}_${i}`] = { color: rgbString }
     }
   })

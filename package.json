@@ -6,27 +6,37 @@
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "rm -rf lib/* && tsc",
+    "build:watch": "rm -rf lib/* && tsc --project tsconfig.json --watch --pretty",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codeamigos/react-native-better-styles.git"
   },
-  "keywords": ["react", "react-native", "typescript", "stylesheet", "styles", "style", "generation"],
+  "keywords": [
+    "react",
+    "react-native",
+    "typescript",
+    "stylesheet",
+    "styles",
+    "style",
+    "generation"
+  ],
   "author": "Slava Kovalenko",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/codeamigos/react-native-better-styles/issues"
   },
-  "files": ["lib/"],
+  "files": [
+    "lib/"
+  ],
   "homepage": "https://github.com/codeamigos/react-native-better-styles#readme",
   "dependencies": {
-    "@types/color": "^1.0.5",
+    "@types/color": "^3.0.0",
     "@types/lodash": "^4.14.85",
-    "@types/react-native": "^0.50.7",
-    "color": "^2.0.1",
-    "lodash": "^4.17.4",
-    "tslint": "^5.8.0",
-    "typescript": "^2.6.1"
+    "@types/react-native": "^0.60.24",
+    "color": "^3.1.2",
+    "lodash": "^4.17.15",
+    "typescript": "^3.7.3"
   }
 }
